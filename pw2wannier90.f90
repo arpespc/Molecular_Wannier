@@ -3639,7 +3639,7 @@ SUBROUTINE compute_amn
 
    ! DEALLOCATE (mo_coefficents, mo_coefficents_tmp, gf_mo) ! zh_mo
    DEALLOCATE(mo_coefficents, gf_mo) ! zh_mo
-   IF (have_molecular) THEN 
+   IF (noncolin) THEN 
       DEALLOCATE(spin_eig_mo)
    ENDIF
 
