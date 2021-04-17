@@ -3384,7 +3384,7 @@ SUBROUTINE compute_amn
                ENDDO ! iw
 
             ENDDO ! ipol
-         ELSE old_spinor_proj_case ! not the old spinor case
+         ELSE old_spinor_proj_case ! not the old spinor case, the stupid grammer
             IF (have_molecular) THEN
                DO i_mo = 1, n_molecular
                   ! spin_z_pos=.false.;spin_z_neg=.false.
@@ -3582,7 +3582,7 @@ SUBROUTINE compute_amn
             ENDIF ! end if have molecular
          ENDIF old_spinor_proj_case
 
-      ELSE  noncolin_case ! scalar wfcs 
+      ELSE  noncolin_case ! scalar wfcs, stupid name convension ! 
 
             ! whether have molecular
             IF (have_molecular) THEN
@@ -3636,8 +3636,13 @@ SUBROUTINE compute_amn
    ENDDO  ! k-points
 
    DEALLOCATE (sgf,csph, gf_spinor, sgf_spinor)
+
    ! DEALLOCATE (mo_coefficents, mo_coefficents_tmp, gf_mo) ! zh_mo
-   DEALLOCATE(mo_coefficents, gf_mo, spin_eig_mo) ! zh_mo
+   DEALLOCATE(mo_coefficents, gf_mo) ! zh_mo
+   IF (have_molecular) THEN 
+      DEALLOCATE(spin_eig_mo)
+   ENDIF
+
    IF(any_uspp) THEN
      CALL deallocate_bec_type (becp)
    ENDIF
